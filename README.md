@@ -2,7 +2,7 @@
 
 [![en](https://img.shields.io/badge/Language-English-green)](README.md) [![es](https://img.shields.io/badge/Idioma-Español-green)](README.es.md)
 
-- App Link: [ciclomart.com](https://ciclomart.com)
+- App Link: _formerly deployed at [ciclomart.com](https://ciclomart.com) — now offline; see the demo video below_
 - User Instructions: [Canva Presentation](https://www.canva.com/design/DAG23e0XYS4/qg8KUY0ukJcyz4XLgN-wlw/edit?utm_content=DAG23e0XYS4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - Hours Listing: [Google Spreadsheet](https://docs.google.com/spreadsheets/d/16X9bC5Drs2z4pwJ-D0CnR451mCKMRXd3i1B2WLkOS3M/edit?usp=sharing)
 
@@ -56,8 +56,8 @@ CicloMart is a web marketplace for buying and selling bicycles and cycling spare
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/CicloMart_front.git
-cd CicloMart_front
+git clone https://github.com/w1sec0d/ciclomart_frontend.git
+cd ciclomart_frontend
 ```
 
 2. Install dependencies:
@@ -74,9 +74,18 @@ npm run dev
 
 4. Open your browser and navigate to `http://localhost:5173` to see the application running.
 
-To run the project correctly, you must include a .env file in the project root with the following environment variables:
+To run the project correctly, copy `.env.example` to `.env` in the project root and fill in the values:
 
-- VITE_API_URL
+```bash
+cp .env.example .env
+```
+
+The following environment variables are supported:
+
+- `VITE_API_URL`: base URL of the CicloMart backend API (e.g. `http://localhost:3001`)
+- `VITE_MP_PUBLIC_KEY`: MercadoPago public key (safe to expose in the browser)
+- `VITE_MP_CLIENT_ID`: MercadoPago client ID
+- `VITE_MP_REDIRECT_URI`: MercadoPago OAuth redirect URI
 
 ### Additional Considerations
 
