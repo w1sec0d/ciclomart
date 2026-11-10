@@ -10,7 +10,7 @@
     "dev": "concurrently -n web,api -c blue,green \"npm --prefix frontend run dev\" \"npm --prefix backend run dev\"",
     "dev:web": "npm --prefix frontend run dev",
     "dev:api": "npm --prefix backend run dev",
-    "build": "npm --prefix frontend run build",
+    "build": "npm --prefix frontend run build && node -e \"require('node:fs').cpSync('frontend/dist', 'dist', { recursive: true })\"",
     "lint": "npm --prefix frontend run lint",
     "test": "npm --prefix backend test",
     "check:translations": "node frontend/check-translations.cjs",
