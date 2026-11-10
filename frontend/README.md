@@ -98,7 +98,7 @@ npm run dev
 
 ### Environment variables
 
-- `VITE_API_URL`: base URL of the CicloMart backend API (e.g. `http://localhost:3001`)
+- `VITE_API_URL`: base URL of the CicloMart backend API, including the `/api` prefix (e.g. `http://localhost:3001/api`)
 - `VITE_MP_PUBLIC_KEY`: MercadoPago public key (safe to expose in the browser)
 - `VITE_MP_CLIENT_ID`: MercadoPago client ID
 - `VITE_MP_REDIRECT_URI`: MercadoPago OAuth redirect URI
