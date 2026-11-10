@@ -34,7 +34,7 @@ const uploadImage = async (id, image) => {
     formData.append('upload_preset', 'ciclomart')
 
     const response = await axios.post(
-      'https://api.cloudinary.com/v1_1/drfmpnhaz/image/upload', // Reemplaza con tu cloud name
+      'https://api.cloudinary.com/v1_1/your-cloud-name/image/upload', // Reemplaza con tu cloud name
       formData
     )
     console.log('Response:', response.data.secure_url)

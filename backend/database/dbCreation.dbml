@@ -52,7 +52,7 @@ Table "usuario" {
   "direccionNumero" varchar(255)
   "direccionPiso" varchar(30)
   "direccionApartamento" varchar(30)
-  "direccionCiudad" varchar(255) [default: "Bogotá"]
+  "direccionCiudad" varchar(255) [default: "Example City"]
   "telefono" varchar(60) 
   "username" varchar(45) 
   "password" varchar(64) [not null]

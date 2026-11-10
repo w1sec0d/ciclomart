@@ -12,7 +12,7 @@ import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-const ProductRating = ({ telefono = '1234567890' }) => {
+const ProductRating = ({ telefono = '0000000000' }) => {
   const { id } = useParams()
   const { t } = useTranslation()
   const { register, handleSubmit, reset } = useForm()
@@ -184,7 +184,7 @@ const ProductRating = ({ telefono = '1234567890' }) => {
         formData.append('upload_preset', 'cicloMart')
 
         const response = await axios.post(
-          'https://api.cloudinary.com/v1_1/dg354wdzy/image/upload',
+          'https://api.cloudinary.com/v1_1/your-cloud-name/image/upload',
           formData
         )
 

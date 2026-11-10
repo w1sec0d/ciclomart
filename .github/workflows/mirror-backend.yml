@@ -29,10 +29,14 @@ jobs:
       - name: Push backend subtree to legacy repository
         env:
           LEGACY_BACKEND_TOKEN: ${{ secrets.LEGACY_BACKEND_TOKEN }}
+          LEGACY_BACKEND_REPO_URL: ${{ vars.LEGACY_BACKEND_REPO_URL }}
         run: |
+          if [ -z "$LEGACY_BACKEND_REPO_URL" ]; then
+            echo "::error::Set the LEGACY_BACKEND_REPO_URL repository variable"
+            exit 1
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git subtree split --prefix=backend -b backend-mirror
-          git push --force \
-            "https://x-access-token:${LEGACY_BACKEND_TOKEN}@github.com/w1sec0d/ciclomart_backend.git" \
-            backend-mirror:main
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$LEGACY_BACKEND_TOKEN" | base64 -w0)"
+          git -c http.extraheader="$AUTH_HEADER" push --force "$LEGACY_BACKEND_REPO_URL" backend-mirror:main

@@ -62,7 +62,7 @@ CREATE TABLE `usuario` (
   `direccionNumero` varchar(255),
   `direccionPiso` varchar(30),
   `direccionApartamento` varchar(30),
-  `direccionCiudad` varchar(255) DEFAULT 'Bogotá',
+  `direccionCiudad` varchar(255) DEFAULT 'Example City',
   `telefono` varchar(60),
   `username` varchar(45),
   `password` varchar(64) NOT NULL,
@@ -328,14 +328,14 @@ CREATE TABLE `mensaje` (
 -- Insert sample users
 INSERT INTO `usuario` (`nombre`, `apellido`, `fechaNacimiento`, `rol`, `correo`, `direccionNombre`,`telefono`, `username`, `password`)
 VALUES 
-('John', 'Smith', '1985-05-15', 'comprador', 'john.smith@example.com', 'Street 123, City', '3001234567', 'johnsmith', '$2b$10$TbLwUaHLc9Pw6hEa8ZqojOgfzzEVjNuGOGLBezxVWTdU7W0r4weE.'),
-('Sarah', 'Johnson', '1990-08-22', 'vendedor', 'sarah.johnson@example.com', 'Street 123, City', '3107654321', 'sarahj', '$2b$10$TbLwUaHLc9Pw6hEa8ZqojOgfzzEVjNuGOGLBezxVWTdU7W0r4weE.'),
-('Michael', 'Williams', '1978-11-30', 'administrador', 'michael.williams@example.com', 'Street 10, City', '3209876543', 'michaelw', '$2b$10$TbLwUaHLc9Pw6hEa8ZqojOgfzzEVjNuGOGLBezxVWTdU7W0r4weE.');
+('Buyer', 'One', '2000-01-01', 'comprador', 'buyer1@example.com', '123 Example Street', '0000000000', 'buyer1', '$2b$10$TbLwUaHLc9Pw6hEa8ZqojOgfzzEVjNuGOGLBezxVWTdU7W0r4weE.'),
+('Seller', 'One', '2000-01-01', 'vendedor', 'seller1@example.com', '123 Example Street', '0000000000', 'seller1', '$2b$10$TbLwUaHLc9Pw6hEa8ZqojOgfzzEVjNuGOGLBezxVWTdU7W0r4weE.'),
+('Admin', 'One', '2000-01-01', 'administrador', 'admin1@example.com', '123 Example Street', '0000000000', 'admin1', '$2b$10$TbLwUaHLc9Pw6hEa8ZqojOgfzzEVjNuGOGLBezxVWTdU7W0r4weE.');
 
 
 INSERT INTO `usuario` VALUES
-('4', 'Seller', 'Smith', '2003-07-15', 'vendedor', 'seller@example.com', '110382', 'Street 324, City', '48-50', '', '', 'Helsinki', '3001234567', 'mluukkai', '$2b$10$PqKSvdLV5aCgRAXZUSq8IuFcmdy6cyyoADJFFX4/HL7qhJ.XDajmS', '0', '2025-03-01 14:51:26', '0000000000', 'APP_USR-REDACTED', 'TG-REDACTED', 'APP_USR-REDACTED'),
-('5', 'Buyer', 'Smith', '2003-04-16', 'comprador', 'buyer@example.com', '110382', 'Street 324, City', '48-50', '', '','Bogotá', '3001234567', 'wisecod', '$2b$10$PqKSvdLV5aCgRAXZUSq8IuFcmdy6cyyoADJFFX4/HL7qhJ.XDajmS', '0', '2025-03-01 15:13:31', NULL, NULL, NULL, NULL);
+('4', 'Seller', 'Two', '2000-01-01', 'vendedor', 'seller2@example.com', '00000', '456 Sample Avenue', '1', '', '', 'Example City', '0000000000', 'seller2', '$2b$10$PqKSvdLV5aCgRAXZUSq8IuFcmdy6cyyoADJFFX4/HL7qhJ.XDajmS', '0', '2025-03-01 14:51:26', '0000000000', 'APP_USR-REDACTED', 'TG-REDACTED', 'APP_USR-REDACTED'),
+('5', 'Buyer', 'Two', '2000-01-01', 'comprador', 'buyer2@example.com', '00000', '456 Sample Avenue', '1', '', '', 'Example City', '0000000000', 'buyer2', '$2b$10$PqKSvdLV5aCgRAXZUSq8IuFcmdy6cyyoADJFFX4/HL7qhJ.XDajmS', '0', '2025-03-01 15:13:31', NULL, NULL, NULL, NULL);
 
 
 -- Insert sample brands
@@ -436,70 +436,70 @@ VALUES
 -- Insert sample images (keeping existing images for first models, adding placeholders for new ones)
 INSERT INTO `imagen` (`idUsuario`, `idModelo`, `url`)
 VALUES 
-(null, 1, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1739199906/ukc7nxqc5hm79o4utb39.png'),
-(null, 2, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1739200194/qhvxoj4ggjp1qrdn1fpd.png'),
-(null, 3, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1739200646/iyqe0j8piameldruninf.png'),
-(null, 4, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761693921/trek-fx-3---2025-iv-798681-2_u7vamz.png'),
-(null, 5, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761694216/specialized-specialized-rockhopper-29-comp-2024_bugp7w.webp'),
-(null, 6, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1739201523/td7nvl10zjctewo5jgld.png'),
-(null, 7, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1739201377/d10mnzoi5xp8ibs1apvm.png'),
-(null, 8, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761694261/498052-1-bbbd5d-large-1693226651_zrbakd.png'),
-(null, 9, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761694294/tensorgx_large_99cf6dfe-7854-404d-a4ef-da990ae4f9ab_uqfpez.png'),
-(null, 10, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761694808/sram-sram-pg-1230-cassette-nx-eagle-12-speeds-11-5_rr1hvf.png'),
-(null, 11, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761694488/s-l1600_-_2021-11-17T085924.596-removebg-preview_hemfw7.png'),
-(null, 12, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761694546/s-l1600__21_-removebg-preview_affrbu.png'),
-(null, 13, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761694625/ShimanoDeoreXTHydraulicBrakeLeverBL-M8100_Left_withBrakeCaliperBR-M8100_Front_8e1bac99-edd6-476e-a40c-0b8d750cf288_h3yzem.png'),
-(null, 14, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761694675/image-removebg-preview_33_06298793-dfd9-477f-9849-45b782b785c5_1080x_ords00.png'),
-(null, 15, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761694736/sram-sram-level-hydraulic-disc-brake_nmgczy.png'),
-(null, 16, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761694866/PimpMyMT5-600x354px_aggzzw.png'),
-(null, 17, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695000/Untitled-design--49_oown9a.png'),
-(null, 18, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1740430801/pxjassqtrzvnbrpovqur.png'),
-(null, 19, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695115/ShimanoB-TypeB05S-RXResin_umusnp.png'),
-(null, 20, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695200/c120mmblackfrontdv_beqh6d.png'),
-(null, 21, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695241/c130mmblack3qdv_lq4gim.png'),
-(null, 22, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695280/MY26_34SL__PS_E_Matte_GripSL_KaboltSL__2_Hero_1600x1600_vbtyfp.png'),
-(null, 23, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695381/rs-sdlxc-sel-230x65-lnm-hb-ss-b1-c-3q-v-v02_rk4bb0.png'),
-(null, 24, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695412/dps_performance_3_pos_standard_side_frscuh.png'),
-(null, 25, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695445/original_2015_HBR35_CHESTER_RS_20mm_BLK_WHT_pytosd.png'),
-(null, 26, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695488/13294_A_1_Elite_Road_Bar_Handlebar_tegp2d.png'),
-(null, 27, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695536/21017-00_CMPNT_SW-CARBON-AEROFLY-BAR-25-RD-BAR_SATIN-CARBON_kgi4lp.png'),
-(null, 28, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695582/GiantContactSLRAeroHandlebar440mmMy18Propel_ry9dqw.png'),
-(null, 29, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695609/original_Handlebar_35mm_Turbine_R_820_RS20_Blue.png_etpjcg.png'),
-(null, 30, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695680/Maxxis-Minion-DHF-29er-Tyre-Pushbikes_994x_hqfzmv.png'),
-(null, 31, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695783/2a928571-064a-521e-906f-1eece315d15e_oygd1l.png'),
-(null, 32, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695839/hs440_schwalbe_marathon-plus.png_q7bxsz.webp'),
-(null, 33, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695875/bike-mtb-ardent-skw_taejf7.webp'),
-(null, 34, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761695973/100514_angle1_1000x1000-300x300_utlmxw_ljmkck.png'),
-(null, 35, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696021/Schwalbe_G-One_Speed_V-guard_foldedae_1725021564_uusfiu.png'),
-(null, 36, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696062/4_PD-M520SPDPEDALSBLACK_pykbqx.png'),
-(null, 37, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696108/Stamp_1_small_purple-_1_1080x_jqez9f.png'),
-(null, 38, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696148/10001031_Shimano_105_PD_R7000_Pedale_dio544.png'),
-(null, 39, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696247/race-face-chester-pedal-376874-11_kxvhlf.png'),
-(null, 40, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696282/CascoBontragerStarvosMips-7_720x_r9l4o4.png'),
-(null, 41, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696331/specialized-propero-3-angi-ready_fpaxyl.png'),
-(null, 42, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696358/image-f5775c69217a4c8d88528ba7b6a71244_jytkgt.png'),
-(null, 43, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696391/25102001_1_nlt6zn.webp'),
-(null, 44, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696462/14009_A_1_Montrose_Elite_Saddle_ym3wbn.png'),
-(null, 45, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696506/27118-171_SDDL_SW-POWER-ARC-CARBON_RED_HERO_nnqdp6.png'),
-(null, 46, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696580/adjustable-bicycle-seat-802743058-kev6w1hj_lc3p2x.png'),
-(null, 47, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696643/BBBBBB-14D-MIXED_fta7aj_lsukon.png'),
-(null, 48, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761696691/L-HEBIKEFRR-1_eqj0yz.png'),
-(null, 49, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1739203206/dgeumsxzyrlqv3kzqdw6.png');
+(null, 1, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 2, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 3, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 4, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 5, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 6, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 7, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 8, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 9, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 10, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 11, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 12, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 13, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 14, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 15, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 16, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 17, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 18, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 19, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 20, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 21, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 22, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 23, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 24, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 25, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 26, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 27, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 28, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 29, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 30, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 31, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 32, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 33, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 34, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 35, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 36, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 37, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 38, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 39, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 40, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 41, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 42, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 43, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 44, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 45, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 46, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 47, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 48, 'https://placehold.co/600x400?text=Placeholder'),
+(null, 49, 'https://placehold.co/600x400?text=Placeholder');
 
 -- Insert sample bicycles
 INSERT INTO `bicicleta` (`tipoBicicleta`, `color`, `genero`, `edad`, `tamañoMarco`, `materialMarco`, `tamañoRueda`, `tipoFrenos`, `velocidades`, `suspension`, `transmision`, `tipoPedales`, `manubrio`, `pesoBicicleta`, `pesoMaximo`, `extras`, `tarjeta`)
 VALUES 
-('MTB', 'Negra', 'Unisex', 'Adulto', 'M', 'Aluminio', '29"', 'Disco', '21', 'Delantera', 'Shimano', 'Plataforma', 'Plano', 14.5, 120, 'Bottle cage, kickstand','https://res.cloudinary.com/drfmpnhaz/image/upload/v1761721280/tarjeta_anqoui.jpg'),
-('Carretera', 'Azul', 'Unisex', 'Adulto', 'L', 'Carbono', '28"', 'Caliper', '22', 'Ninguna', 'Shimano', 'Sin clip', 'Caída', 8.5, 100, 'Carbon seatpost', 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761721280/tarjeta_anqoui.jpg'),
-('Carretera', 'Azul', 'Unisex', 'Adulto', 'M', 'Carbono', '28"', 'Caliper', '22', 'Ninguna', 'Shimano', 'Sin clip', 'Caída', 8.5, 100, 'Lightweight wheels', 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761721280/tarjeta_anqoui.jpg'),
+('MTB', 'Negra', 'Unisex', 'Adulto', 'M', 'Aluminio', '29"', 'Disco', '21', 'Delantera', 'Shimano', 'Plataforma', 'Plano', 14.5, 120, 'Bottle cage, kickstand','https://placehold.co/600x400?text=Placeholder'),
+('Carretera', 'Azul', 'Unisex', 'Adulto', 'L', 'Carbono', '28"', 'Caliper', '22', 'Ninguna', 'Shimano', 'Sin clip', 'Caída', 8.5, 100, 'Carbon seatpost', 'https://placehold.co/600x400?text=Placeholder'),
+('Carretera', 'Azul', 'Unisex', 'Adulto', 'M', 'Carbono', '28"', 'Caliper', '22', 'Ninguna', 'Shimano', 'Sin clip', 'Caída', 8.5, 100, 'Lightweight wheels', 'https://placehold.co/600x400?text=Placeholder'),
 ('Híbrida', 'Gris', 'Unisex', 'Adulto', 'M', 'Aluminio', '28"', 'Disco', '24', 'Delantera', 'Shimano', 'Plataforma', 'Plano', 12.8, 130, 'Fenders, rear rack', null),
 ('MTB', 'Roja', 'Unisex', 'Adulto', 'S', 'Aluminio', '27.5"', 'Disco', '18', 'Delantera', 'Shimano', 'Plataforma', 'Plano', 13.5, 110, 'Bottle cage', null);
 
 -- Insert sample stores
 INSERT INTO `tienda` (`idUsuarioAdministrador`, `nombre`, `descripcion`, `telefono`)
 VALUES 
-(3, 'Bogotá Bike Shop', 'The best bicycle shop in Bogotá with quality bikes and components', '3001234567'),
-(3, 'Mountain Riders Store', 'Specialized in mountain bikes and trail gear', '3105551234');
+(3, 'Example Bike Shop', 'A sample bicycle shop used for local development', '0000000000'),
+(3, 'Sample Bike Store', 'A sample store used for local development', '0000000000');
 
 -- Insert sample documents (ownership records for bicycles)
 INSERT INTO `documento` (`idModelo`, `idUsuario`, `tipo`, `descripcion`, `estado`, `fechaCompra`)
@@ -511,9 +511,9 @@ VALUES
 -- Insert document images (images for ownership documents)
 INSERT INTO `imagen` (`idUsuario`, `idDocumento`, `idModelo`, `url`)
 VALUES 
-(NULL, 1, NULL, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761721280/tarjeta_anqoui.jpg'),
-(NULL, 2, NULL, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761721280/tarjeta_anqoui.jpg'),
-(NULL, 3, NULL, 'https://res.cloudinary.com/drfmpnhaz/image/upload/v1761721280/tarjeta_anqoui.jpg');
+(NULL, 1, NULL, 'https://placehold.co/600x400?text=Placeholder'),
+(NULL, 2, NULL, 'https://placehold.co/600x400?text=Placeholder'),
+(NULL, 3, NULL, 'https://placehold.co/600x400?text=Placeholder');
 
 -- Insert sample products
 INSERT INTO `producto` (`idModelo`, `idVendedor`, `idTienda`, `precio`, `precioCompleto`, `cantidad`,`ventas`, `estado`, `disponibilidad`, `costoEnvio`, `retiroEnTienda`)
@@ -592,16 +592,16 @@ VALUES
 -- Insert sample payments
 INSERT INTO `carrito` (`idPreferencia`, `idPago`, `idVendedor`, `idComprador`, `estado`, `metodoPago`, `precioTotal`, `fecha`, `direccionEnvio`)
 VALUES 
-(1, 1, 2, 1, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), 'Calle 123, Bogotá'),
-(2, 2, 2, 2, 'pendiente_pago', 'PayPal', 800.00, NOW(), 'Carrera 45, Medellín'),
-(3, 3, 2, 3, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), 'Calle 123, Bogotá'),
-(4, 4, 2, 1, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), 'Calle 123, Bogotá'),
-(5, 5, 2, 2, 'pendiente_pago', 'PayPal', 800.00, NOW(), 'Carrera 45, Medellín'),
-(6, 6, 2, 3, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), 'Calle 123, Bogotá'),
-(7, 7, 2, 1, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), 'Calle 123, Bogotá'),
-(8, 8, 2, 2, 'pendiente_pago', 'PayPal', 800.00, NOW(), 'Carrera 45, Medellín'),
-(9, 9, 2, 3, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), 'Calle 123, Bogotá'),
-(10, 10, 2, 1, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), 'Calle 123, Bogotá');
+(1, 1, 2, 1, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), '123 Example Street, Example City'),
+(2, 2, 2, 2, 'pendiente_pago', 'PayPal', 800.00, NOW(), '456 Sample Avenue, Example Town'),
+(3, 3, 2, 3, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), '123 Example Street, Example City'),
+(4, 4, 2, 1, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), '123 Example Street, Example City'),
+(5, 5, 2, 2, 'pendiente_pago', 'PayPal', 800.00, NOW(), '456 Sample Avenue, Example Town'),
+(6, 6, 2, 3, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), '123 Example Street, Example City'),
+(7, 7, 2, 1, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), '123 Example Street, Example City'),
+(8, 8, 2, 2, 'pendiente_pago', 'PayPal', 800.00, NOW(), '456 Sample Avenue, Example Town'),
+(9, 9, 2, 3, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), '123 Example Street, Example City'),
+(10, 10, 2, 1, 'pendiente_pago', 'Tarjeta de Crédito', 1500.00, NOW(), '123 Example Street, Example City');
 
 -- Insert sample products of the cart
 INSERT INTO `carritoProducto` (`idCarrito`,`idPago`, `idProducto`, `idPreferencia`, `cantidad`, `fecha`)

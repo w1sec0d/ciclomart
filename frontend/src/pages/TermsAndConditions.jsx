@@ -56,7 +56,7 @@ const TermsAndCondition = () => {
     {
       title: '11. Contacto',
       content:
-        'Si tiene alguna pregunta puede contactarnos en: ciclomartsoporte@gmail.com',
+        'Si tiene alguna pregunta puede contactarnos en: support@example.com',
     },
   ]
 

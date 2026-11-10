@@ -1,4 +1,4 @@
-// Based on a component made by me (w1secod) on: https://github.com/w1sec0d/fullstack-course/blob/main/part7-react-router-and-more/bloglist/frontend/src/components/ToastNotification.jsx
+// Toast notification component
 
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
