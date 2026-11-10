@@ -7,10 +7,6 @@ Monorepo for CicloMart, containing the React/Vite storefront and the Express/MyS
 - App Link: _formerly deployed at [ciclomart.com](https://ciclomart.com) — now offline; see the demo video below_
 - User Instructions: [Canva Presentation](https://www.canva.com/design/DAG23e0XYS4/qg8KUY0ukJcyz4XLgN-wlw/edit?utm_content=DAG23e0XYS4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - Hours Listing: [Google Spreadsheet](https://docs.google.com/spreadsheets/d/16X9bC5Drs2z4pwJ-D0CnR451mCKMRXd3i1B2WLkOS3M/edit?usp=sharing)
-- Frontend guide: [frontend/README.md](frontend/README.md)
-- Backend guide: [backend/README.md](backend/README.md)
-
-## Repository history
 
 CicloMart was originally developed as two independent repositories:
 
@@ -18,10 +14,6 @@ CicloMart was originally developed as two independent repositories:
 - [`ciclomart_backend`](https://github.com/w1sec0d/ciclomart_backend) — Express/MySQL API
 
 On 9 November 2026 both repositories were unified into this monorepo so that client and API changes ship together. The full commit history of both projects is preserved under `frontend/` and `backend/`.
-
-- The old frontend URL now redirects to this repository.
-- `ciclomart_backend` is kept as an automated, read-only mirror of [`backend/`](backend/). Do not commit to the legacy repository; changes flow from this monorepo.
-- The former EC2 deployment was decommissioned. The old deployment workflows are retained under `.github/workflows/*.yml.disabled` for reference and are not executed. Continuous integration now runs linting, builds and tests only.
 
 ## Description
 
