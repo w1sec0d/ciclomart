@@ -1,3 +1,6 @@
+# DISABLED 2026-11-09: the previous EC2 instance was decommissioned.
+# This file is retained for historical reference only and is not executed by GitHub Actions.
+# Before re-enabling, restore the deployment target, secrets and paths.
 name: Deploy Frontend to EC2
 
 on:
@@ -26,8 +29,8 @@ jobs:
         env:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
           VITE_MP_PUBLIC_KEY: ${{ secrets.MP_PUBLIC_KEY }}
-          VITE_MP_CLIENT_ID: ${{ secrets.VITE_MP_CLIENT_ID }}
-          VITE_MP_REDIRECT_URI: ${{ secrets.VITE_MP_REDIRECT_URI }}
+          VITE_MP_CLIENT_ID: ${{ secrets.MP_CLIENT_ID }}
+          VITE_MP_REDIRECT_URI: ${{ secrets.MP_REDIRECT_URI }}
 
       - name: Create deployment package
         run: |

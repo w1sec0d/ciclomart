@@ -1,8 +1,10 @@
-# Archivos a ser ignorados por el formateador de código
 .env
 node_modules
 build
 dist
+coverage
 CODE_OF_CONDUCT.md
+LICENSE
 LICENSE.md
 README.md
+README.es.md

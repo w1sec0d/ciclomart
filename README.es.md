@@ -1,13 +1,27 @@
-# CicloMart (Frontend) - Compra y venta de bicicletas y repuestos de ciclismo
+# CicloMart - Compra y venta de bicicletas y repuestos de ciclismo
 
 [![en](https://img.shields.io/badge/Language-English-green)](README.md) [![es](https://img.shields.io/badge/Idioma-Español-green)](README.es.md)
+
+Monorepositorio de CicloMart, con la aplicación React/Vite y la API Express/MySQL.
 
 - Link de la app: _antes desplegada en [ciclomart.com](https://ciclomart.com) — ahora fuera de línea; ver el video de demostración abajo_
 - Instrucciones de usuario: [Presentación en Canva](https://www.canva.com/design/DAG23e0XYS4/qg8KUY0ukJcyz4XLgN-wlw/edit?utm_content=DAG23e0XYS4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - Listado de horas: [Hoja de cálculo en Google Sheets](https://docs.google.com/spreadsheets/d/16X9bC5Drs2z4pwJ-D0CnR451mCKMRXd3i1B2WLkOS3M/edit?usp=sharing)
+- Guía del frontend: [frontend/README.es.md](frontend/README.es.md)
+- Guía del backend: [backend/README.es.md](backend/README.es.md)
 
-- Ciclomart Backend: [Repositorio de Github](https://github.com/w1sec0d/ciclomart_backend)
-- Ciclomart Frontend: [Repositorio de Github](https://github.com/w1sec0d/ciclomart_frontend)
+## Historia del repositorio
+
+CicloMart se desarrolló originalmente como dos repositorios independientes:
+
+- [`ciclomart_frontend`](https://github.com/w1sec0d/ciclomart_frontend) — cliente React/Vite
+- [`ciclomart_backend`](https://github.com/w1sec0d/ciclomart_backend) — API Express/MySQL
+
+El 9 de noviembre de 2026 ambos repositorios se unificaron en este monorepositorio para que los cambios del cliente y de la API se publiquen juntos. El historial completo de ambos proyectos se conserva bajo `frontend/` y `backend/`.
+
+- La antigua URL del frontend ahora redirige a este repositorio.
+- `ciclomart_backend` se mantiene como un espejo automático de solo lectura de [`backend/`](backend/). No hagas commits en el repositorio legado; los cambios se originan en este monorepositorio.
+- El despliegue anterior en EC2 fue desmantelado. Los flujos de despliegue antiguos se conservan en `.github/workflows/*.yml.disabled` como referencia y no se ejecutan. La integración continua ahora solo ejecuta lint, build y pruebas.
 
 ## Descripción
 
@@ -15,35 +29,115 @@ CicloMart es una aplicación web de compra-venta de bicicletas y repuestos de ci
 
 ## Demo del proyecto
 
-![Demo de CicloMart](/src/docs/preview.gif)
+![Demo de CicloMart](docs/preview.gif)
 
 [Haz clic aquí para ver la demo completa](https://youtu.be/vG_Zx618jJ4)
 
 ### Página de inicio
 
-![Página de inicio de CicloMart](/src/docs/landingPage.png)
+![Página de inicio de CicloMart](docs/landingPage.png)
 
 ### Página de registro
 
-![Página de registro](/src/docs/register.png)
+![Página de registro](docs/register.png)
 
 ### Filtro avanzado de repuestos
 
-![Filtro avanzado de repuestos](/src/docs/SparePartsFilter.png)
+![Filtro avanzado de repuestos](docs/SparePartsFilter.png)
 
 ### Vista de producto
 
-![Vista de producto](/src/docs/productView.png)
+![Vista de producto](docs/productView.png)
 
 ### Perfil de usuario
 
-![Perfil de usuario](/src/docs/profile.png)
+![Perfil de usuario](docs/profile.png)
 
 ## Arquitectura del sistema
 
-![Arquitectura del sistema](/src/docs/system_architecture_es.png)
+![Arquitectura del sistema](docs/system_architecture_es.png)
 
-<!-- ### Instrucciones para el usuario -->
+## Estructura del repositorio
+
+```
+.
+├─ frontend/          Aplicación React + Vite
+├─ backend/           API REST Express + MySQL
+├─ docs/              Capturas, diagramas y notas de despliegue compartidas
+├─ .github/workflows/ CI y flujos de despliegue EC2 conservados (deshabilitados)
+├─ package.json       Scripts raíz para ejecutar ambas aplicaciones
+└─ README.md
+```
+
+## Primeros pasos
+
+### Requisitos
+
+- Node.js 22 y npm
+- MySQL 8
+
+### Instalación
+
+```bash
+git clone https://github.com/w1sec0d/ciclomart.git
+cd ciclomart
+npm install
+```
+
+El script `postinstall` de la raíz instala las dependencias de `frontend/` y `backend/`. También puedes ejecutar `npm run install:all` para usar el lockfile de cada aplicación con `npm ci`.
+
+### Variables de entorno
+
+```bash
+cp frontend/.env.example frontend/.env
+cp backend/.env.example backend/.env
+```
+
+Completa ambos archivos. Consulta las guías del frontend y del backend para ver la lista completa de variables.
+
+### Base de datos
+
+Crea el esquema de MySQL con el script incluido:
+
+```bash
+mysql -u root -p < backend/database/dbCreation.sql
+```
+
+El backend toma los datos de conexión de `backend/.env` (`DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`).
+
+### Ejecutar ambas aplicaciones
+
+```bash
+npm run dev
+```
+
+- Frontend: [http://localhost:5173](http://localhost:5173)
+- API del backend: [http://localhost:3001](http://localhost:3001)
+
+También puedes iniciarlas por separado con `npm run dev:web` y `npm run dev:api`.
+
+### Scripts de la raíz
+
+| Script                    | Descripción                                             |
+| ------------------------- | ------------------------------------------------------- |
+| `npm install`             | Instala dependencias de la raíz, frontend y backend     |
+| `npm run install:all`     | Instalación reproducible con `npm ci` en ambas apps     |
+| `npm run dev`             | Ejecuta frontend y backend juntos                       |
+| `npm run dev:web`         | Ejecuta el servidor de desarrollo de Vite               |
+| `npm run dev:api`         | Ejecuta la API Express con nodemon                      |
+| `npm run build`           | Compila el frontend para producción                     |
+| `npm run lint`            | Ejecuta el lint del frontend                            |
+| `npm test`                | Ejecuta la suite de Jest del backend                    |
+| `npm run check:translations` | Verifica las claves de traducción inglés/español    |
+| `npm run format`          | Formatea el repositorio con Prettier                    |
+| `npm run format:check`    | Verifica el formato sin escribir cambios                |
+
+## Documentación
+
+- Guía del frontend: [frontend/README.es.md](frontend/README.es.md)
+- Guía del backend: [backend/README.es.md](backend/README.es.md)
+- Encriptación: [backend/docs/ENCRYPTION.md](backend/docs/ENCRYPTION.md)
+- Rotación de claves y AWS KMS: [backend/docs/KEY_ROTATION.md](backend/docs/KEY_ROTATION.md)
 
 ## Miembros del equipo
 
@@ -51,97 +145,6 @@ CicloMart es una aplicación web de compra-venta de bicicletas y repuestos de ci
 - **Carlos David Ramirez Muñoz** - [w1sec0d](https://github.com/w1sec0d)
 - **Johan David Rodriguez Gutierrez** - [Homeroso](https://github.com/Homeroso)
 - **Ronald Daniel Jacanamejoy Mutumbajoy** - [RonaldDaniel20](https://github.com/RonaldDaniel20)
-
-## Instalación para desarrolladores
-
-1. Clona el repositorio:
-
-```bash
-git clone https://github.com/w1sec0d/ciclomart_frontend.git
-cd ciclomart_frontend
-```
-
-2. Instala las dependencias:
-
-```bash
-npm install
-```
-
-3. Ejecuta el servidor de desarrollo:
-
-```bash
-npm run dev
-```
-
-4. Abre tu navegador y navega a `http://localhost:5173` para ver la aplicación en funcionamiento.
-
-Para ejecutar correctamente el proyecto, copia `.env.example` a `.env` en la raíz del proyecto y completa los valores:
-
-```bash
-cp .env.example .env
-```
-
-Las siguientes variables de entorno son compatibles:
-
-- `VITE_API_URL`: URL base de la API del backend de CicloMart (p. ej. `http://localhost:3001`)
-- `VITE_MP_PUBLIC_KEY`: clave pública de MercadoPago (segura de exponer en el navegador)
-- `VITE_MP_CLIENT_ID`: ID de cliente de MercadoPago
-- `VITE_MP_REDIRECT_URI`: URI de redirección OAuth de MercadoPago
-
-### Consideraciones adicionales
-
-- Es recomendable instalar la extensión del formateador [Prettier para VSCODE](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) y establecerla como formateador por defecto para archivos .js y .jsx
-
-  > ❗ **Importante:** Antes de hacer un Pull Request es necesario ejecutar:
-
-  ```bash
-  npm run format
-  ```
-
-Esto formateara todos los archivos de forma estándar y evitará conflictos innecesarios en los pull request
-
-- El proyecto usa Redux, una librería que permite tener un estado global en la aplicacion,
-  donde se almacenan los datos o las variables que se comparten entre los diferentes componentes.
-
-  #### Usando el estado global
-  - ¿Cómo se lee el estado global?
-    Para acceder al estado global se debe usar el hook `useSelector` de la librería `react-redux`, este hook recibe una función que recibe el estado global y retorna solo una porción del estado que se necesite. Por ejemplo, así podremos acceder desde cualquier componente a la variable 'user' que contiene la informacion del usuario de forma global:
-
-    ```javascript
-    import { useSelector } from 'react-redux'
-    // Más tarde en el componente que necesitemos:
-    const Register = () => {
-      const user = useSelector((state) => state.user)
-      // ...
-    }
-    ```
-
-  - ¿Cómo se modifica el estado global?
-    Para modificar el estado primero usaremos el hook useDispatch, este retornará una funcion dispatch,
-    que recibe como parametro acciones definidas en los slices de Redux, estas acciones son funciones que
-    modifican el estado global como setNotification(), clearNotification. Esto lo que nos permite es por ejemplo, desde cualquier componente, modificar la variable global de notificación
-
-    ```javascript
-    import { useDispatch } from 'react-redux'
-    // Más tarde en el componente que necesitemos:
-    const Register = () => {
-      const dispatch = useDispatch()
-      // ...
-      dispatch(
-        setNotification({
-          title: 'Hola Redux!',
-          text: 'Esto es una notificación',
-          icon: 'info',
-        })
-      )
-    }
-    ```
-
-  #### Debuggeando el estado global
-
-  Para debuggear el estado global se puede instalar la extensión de [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) en el navegador, esta extensión permite ver el estado global en tiempo real y ver las acciones que se están ejecutando.
-
-  Esta extensión agrega una ventana en el navegador que muestra el estado global y las acciones que se están ejecutando, permitiendo ver el estado global en tiempo real y debuggear la aplicación de forma más sencilla.
 
 ## Licencia
 
