@@ -20,7 +20,7 @@
     "kms:rotate": "node scripts/rotate_key.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@aws-sdk/client-kms": "^3.943.0",
     "@eslint/eslintrc": "^3.3.0",

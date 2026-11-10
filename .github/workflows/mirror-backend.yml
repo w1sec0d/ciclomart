@@ -1,0 +1,38 @@
+name: Mirror backend to legacy repo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/mirror-backend.yml'
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure git-subtree is available
+        run: |
+          if ! git subtree 2>&1 | grep -q "usage: git subtree"; then
+            curl -fsSL https://raw.githubusercontent.com/git/git/master/contrib/subtree/git-subtree.sh \
+              -o "$RUNNER_TEMP/git-subtree"
+            chmod +x "$RUNNER_TEMP/git-subtree"
+            echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+          fi
+
+      - name: Push backend subtree to legacy repository
+        env:
+          LEGACY_BACKEND_TOKEN: ${{ secrets.LEGACY_BACKEND_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git subtree split --prefix=backend -b backend-mirror
+          git push --force \
+            "https://x-access-token:${LEGACY_BACKEND_TOKEN}@github.com/w1sec0d/ciclomart_backend.git" \
+            backend-mirror:main

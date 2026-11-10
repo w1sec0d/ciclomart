@@ -1,3 +1,6 @@
+# DISABLED 2026-11-09: the previous EC2 instance was decommissioned.
+# This file is retained for historical reference only and is not executed by GitHub Actions.
+# Before re-enabling, restore the deployment target, secrets and paths.
 name: Deploy Backend to EC2
 
 on:

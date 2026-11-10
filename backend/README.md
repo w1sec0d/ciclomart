@@ -1,13 +1,24 @@
-# CicloMart (Backend) - Buy and Sell Bicycles and Cycling Spare Parts
+# CicloMart — Backend (Express + MySQL)
 
 [![en](https://img.shields.io/badge/Language-English-green)](README.md) [![es](https://img.shields.io/badge/Idioma-Español-green)](README.es.md)
+
+This is the CicloMart REST API, part of the [CicloMart monorepo](../README.md).
 
 - App Link: _formerly deployed at [ciclomart.com](https://ciclomart.com) — now offline; see the demo video below_
 - User Instructions: [Canva Presentation](https://www.canva.com/design/DAG23e0XYS4/qg8KUY0ukJcyz4XLgN-wlw/edit?utm_content=DAG23e0XYS4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - Hours Listing: [Google Spreadsheet](https://docs.google.com/spreadsheets/d/16X9bC5Drs2z4pwJ-D0CnR451mCKMRXd3i1B2WLkOS3M/edit?usp=sharing)
+- Frontend guide: [frontend/README.md](../frontend/README.md)
+- Monorepo root: [README.md](../README.md)
 
-- Ciclomart Frontend: [Github Repository](https://github.com/w1sec0d/ciclomart_frontend)
-- Ciclomart Backend: [Github Repository](https://github.com/w1sec0d/ciclomart_backend)
+> **Repository history:** this API was originally developed in the standalone
+> [`ciclomart_backend`](https://github.com/w1sec0d/ciclomart_backend) repository.
+> It was merged with the frontend into the [CicloMart monorepo](../README.md) on
+> 9 November 2026.
+>
+> `backend/` is automatically mirrored to the legacy `ciclomart_backend` repository
+> by the `Mirror backend to legacy repo` workflow. Treat that repository as
+> read-only and make changes here. The former EC2 deployment was decommissioned;
+> the old deployment workflow is retained as a disabled file for reference.
 
 ## Description
 
@@ -15,35 +26,33 @@ CicloMart is a web marketplace for buying and selling bicycles and cycling spare
 
 ## Demo
 
-![CicloMart demo](docs/preview.gif)
+![CicloMart demo](../docs/preview.gif)
 
 [Click here to watch the full demo](https://youtu.be/vG_Zx618jJ4)
 
 ### Landing page
 
-![CicloMart landing page](docs/landingPage.png)
+![CicloMart landing page](../docs/landingPage.png)
 
 ### Registration page
 
-![Registration page](docs/register.png)
+![Registration page](../docs/register.png)
 
 ### Advanced spare parts filter
 
-![Advanced spare parts filter](docs/SparePartsFilter.png)
+![Advanced spare parts filter](../docs/SparePartsFilter.png)
 
 ### Product view
 
-![Product view](docs/productView.png)
+![Product view](../docs/productView.png)
 
 ### User profile
 
-![User profile](docs/profile.png)
-
-<!-- ### User Instructions -->
+![User profile](../docs/profile.png)
 
 ## System Architecture
 
-![System Architecture](docs/system_architecture.png)
+![System Architecture](../docs/system_architecture.png)
 
 ## Team Members
 
@@ -54,28 +63,54 @@ CicloMart is a web marketplace for buying and selling bicycles and cycling spare
 
 ## Developer Installation
 
+The recommended workflow is to install and run everything from the monorepo root.
+
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/w1sec0d/ciclomart_backend.git
-cd ciclomart_backend
+git clone https://github.com/w1sec0d/ciclomart.git
+cd ciclomart
 ```
 
-2. Install dependencies:
+2. Install dependencies for both apps:
 
 ```bash
 npm install
+# or: npm run install:all
 ```
 
-3. Run the development server:
+3. Copy and fill the backend environment file:
 
 ```bash
+cp backend/.env.example backend/.env
+```
+
+4. Create the MySQL schema:
+
+```bash
+mysql -u root -p < backend/database/dbCreation.sql
+```
+
+5. Start the API (and the frontend if you want the full app):
+
+```bash
+npm run dev:api
+# or both: npm run dev
+```
+
+The API listens on `http://localhost:3001` by default.
+
+To work on the backend only, run the commands from this directory:
+
+```bash
+cd backend
+npm install
 npm run dev
 ```
 
-To run the project correctly, copy `.env.example` to `.env` in the project root and fill in the values:
+### Environment variables
 
-### Database Variables
+#### Database Variables
 
 - DB_PORT: Database port
 - DB_HOST: Database host
@@ -83,23 +118,23 @@ To run the project correctly, copy `.env.example` to `.env` in the project root 
 - DB_PASSWORD: Database password
 - DB_NAME: Database name
 
-### Frontend Variables
+#### Frontend Variables
 
 - FRONTEND_INTERNAL_URL: Frontend URL (internal address for communication between backend and frontend)
 - FRONTEND_EXTERNAL_URL: Frontend URL (external address, must be publicly accessible. This sets up mercadopago callback URL)
 
-### Authentication Variables
+#### Authentication Variables
 
 - JWT_SECRET: JSON Web Token secret key
 
-### Email Variables (required to send verification codes)
+#### Email Variables (required to send verification codes)
 
 - EMAIL_ONLINE: Email for email sending
 - PASSWORD_ONLINE: Email password for email sending
 - EMAIL_HOST: Email host
 - EMAIL_PORT: Email port
 
-### MercadoPago Variables (required to set up payment gateway)
+#### MercadoPago Variables (required to set up payment gateway)
 
 - BACKEND_URL: Backend URL (must be publicly accessible from mercadopago webhooks)
 - MP_ACCESS_TOKEN: MercadoPago (Payment Gateway) access token
@@ -108,7 +143,7 @@ To run the project correctly, copy `.env.example` to `.env` in the project root 
 - MP_PUBLIC_KEY: MercadoPago (Payment Gateway) public key
 - MP_REDIRECT_URL: MercadoPago (Payment Gateway) redirect URL
 
-### Encryption Variables (required for sensitive data encryption)
+#### Encryption Variables (required for sensitive data encryption)
 
 **Basic (single key):**
 
@@ -134,6 +169,6 @@ These parameters must match a MySQL database instance, which can be initialized 
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

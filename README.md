@@ -1,13 +1,27 @@
-# CicloMart (Frontend) - Buy and Sell Bicycles and Cycling Spare Parts
+# CicloMart - Buy and Sell Bicycles and Cycling Spare Parts
 
 [![en](https://img.shields.io/badge/Language-English-green)](README.md) [![es](https://img.shields.io/badge/Idioma-Español-green)](README.es.md)
+
+Monorepo for CicloMart, containing the React/Vite storefront and the Express/MySQL API.
 
 - App Link: _formerly deployed at [ciclomart.com](https://ciclomart.com) — now offline; see the demo video below_
 - User Instructions: [Canva Presentation](https://www.canva.com/design/DAG23e0XYS4/qg8KUY0ukJcyz4XLgN-wlw/edit?utm_content=DAG23e0XYS4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - Hours Listing: [Google Spreadsheet](https://docs.google.com/spreadsheets/d/16X9bC5Drs2z4pwJ-D0CnR451mCKMRXd3i1B2WLkOS3M/edit?usp=sharing)
+- Frontend guide: [frontend/README.md](frontend/README.md)
+- Backend guide: [backend/README.md](backend/README.md)
 
-- Ciclomart Frontend: [Github Repository](https://github.com/w1sec0d/ciclomart_frontend)
-- Ciclomart Backend: [Github Repository](https://github.com/w1sec0d/ciclomart_backend)
+## Repository history
+
+CicloMart was originally developed as two independent repositories:
+
+- [`ciclomart_frontend`](https://github.com/w1sec0d/ciclomart_frontend) — React/Vite client
+- [`ciclomart_backend`](https://github.com/w1sec0d/ciclomart_backend) — Express/MySQL API
+
+On 9 November 2026 both repositories were unified into this monorepo so that client and API changes ship together. The full commit history of both projects is preserved under `frontend/` and `backend/`.
+
+- The old frontend URL now redirects to this repository.
+- `ciclomart_backend` is kept as an automated, read-only mirror of [`backend/`](backend/). Do not commit to the legacy repository; changes flow from this monorepo.
+- The former EC2 deployment was decommissioned. The old deployment workflows are retained under `.github/workflows/*.yml.disabled` for reference and are not executed. Continuous integration now runs linting, builds and tests only.
 
 ## Description
 
@@ -15,34 +29,115 @@ CicloMart is a web marketplace for buying and selling bicycles and cycling spare
 
 ## Project Demo
 
-![CicloMart demo](/src/docs/preview.gif)
+![CicloMart demo](docs/preview.gif)
 
 [Click here to watch the full demo](https://youtu.be/vG_Zx618jJ4)
 
 ### Landing page
 
-![CicloMart landing page](/src/docs/landingPage.png)
+![CicloMart landing page](docs/landingPage.png)
 
 ### Registration page
 
-![Registration page](/src/docs/register.png)
+![Registration page](docs/register.png)
 
 ### Advanced spare parts filter
 
-![Advanced spare parts filter](/src/docs/SparePartsFilter.png)
+![Advanced spare parts filter](docs/SparePartsFilter.png)
 
 ### Product view
 
-![Product view](/src/docs/productView.png)
+![Product view](docs/productView.png)
 
 ### User profile
 
-![User profile](/src/docs/profile.png)
+![User profile](docs/profile.png)
 
 ## System Architecture
-![System Architecture](/src/docs/system_architecture.png)
 
-<!-- ### User Instructions -->
+![System Architecture](docs/system_architecture.png)
+
+## Repository structure
+
+```
+.
+├─ frontend/          React + Vite single-page application
+├─ backend/           Express + MySQL REST API
+├─ docs/              Shared screenshots, diagrams and deployment notes
+├─ .github/workflows/ CI and the retained (disabled) EC2 deployment workflows
+├─ package.json       Root helper scripts for running both apps
+└─ README.md
+```
+
+## Getting started
+
+### Prerequisites
+
+- Node.js 22 and npm
+- MySQL 8
+
+### Install
+
+```bash
+git clone https://github.com/w1sec0d/ciclomart.git
+cd ciclomart
+npm install
+```
+
+The root `postinstall` script installs the dependencies of both `frontend/` and `backend/`. You can also run `npm run install:all` to use each app's lockfile with `npm ci`.
+
+### Environment variables
+
+```bash
+cp frontend/.env.example frontend/.env
+cp backend/.env.example backend/.env
+```
+
+Fill in both files. See the frontend and backend guides for the full list of variables.
+
+### Database
+
+Create the MySQL schema from the bundled script:
+
+```bash
+mysql -u root -p < backend/database/dbCreation.sql
+```
+
+The backend reads the connection details from `backend/.env` (`DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`).
+
+### Run both apps
+
+```bash
+npm run dev
+```
+
+- Frontend: [http://localhost:5173](http://localhost:5173)
+- Backend API: [http://localhost:3001](http://localhost:3001)
+
+You can also start them separately with `npm run dev:web` and `npm run dev:api`.
+
+### Root scripts
+
+| Script                    | Description                                      |
+| ------------------------- | ------------------------------------------------ |
+| `npm install`             | Installs root, frontend and backend dependencies |
+| `npm run install:all`     | Reproducible install with `npm ci` in both apps  |
+| `npm run dev`             | Runs frontend and backend together               |
+| `npm run dev:web`         | Runs the Vite development server                 |
+| `npm run dev:api`         | Runs the Express API with nodemon                |
+| `npm run build`           | Builds the frontend for production               |
+| `npm run lint`            | Lints the frontend                               |
+| `npm test`                | Runs the backend Jest suite                      |
+| `npm run check:translations` | Checks the English/Spanish translation keys   |
+| `npm run format`          | Formats the repository with Prettier             |
+| `npm run format:check`    | Verifies formatting without writing changes      |
+
+## Documentation
+
+- Frontend guide: [frontend/README.md](frontend/README.md)
+- Backend guide: [backend/README.md](backend/README.md)
+- Encryption: [backend/docs/ENCRYPTION.md](backend/docs/ENCRYPTION.md)
+- Key rotation and AWS KMS: [backend/docs/KEY_ROTATION.md](backend/docs/KEY_ROTATION.md)
 
 ## Team Members
 
@@ -50,97 +145,6 @@ CicloMart is a web marketplace for buying and selling bicycles and cycling spare
 - **Carlos David Ramirez Muñoz** - [w1sec0d](https://github.com/w1sec0d)
 - **Johan David Rodriguez Gutierrez** - [Homeroso](https://github.com/Homeroso)
 - **Ronald Daniel Jacanamejoy Mutumbajoy** - [RonaldDaniel20](https://github.com/RonaldDaniel20)
-
-## Developer Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/w1sec0d/ciclomart_frontend.git
-cd ciclomart_frontend
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Run the development server:
-
-```bash
-npm run dev
-```
-
-4. Open your browser and navigate to `http://localhost:5173` to see the application running.
-
-To run the project correctly, copy `.env.example` to `.env` in the project root and fill in the values:
-
-```bash
-cp .env.example .env
-```
-
-The following environment variables are supported:
-
-- `VITE_API_URL`: base URL of the CicloMart backend API (e.g. `http://localhost:3001`)
-- `VITE_MP_PUBLIC_KEY`: MercadoPago public key (safe to expose in the browser)
-- `VITE_MP_CLIENT_ID`: MercadoPago client ID
-- `VITE_MP_REDIRECT_URI`: MercadoPago OAuth redirect URI
-
-### Additional Considerations
-
-- It's recommended to install the [Prettier for VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) formatter extension and set it as the default formatter for .js and .jsx files
-
-  > ❗ **Important:** Before making a Pull Request, you must run:
-
-  ```bash
-  npm run format
-  ```
-
-This will format all files in a standard way and avoid unnecessary conflicts in pull requests
-
-- The project uses Redux, a library that allows having a global state in the application,
-  where data or variables shared between different components are stored.
-
-  #### Using Global State
-  - How to read global state?
-    To access global state, you must use the `useSelector` hook from the `react-redux` library. This hook receives a function that takes the global state and returns only a portion of the state that is needed. For example, this is how we can access the 'user' variable that contains user information globally from any component:
-
-    ```javascript
-    import { useSelector } from 'react-redux'
-    // Later in the component we need:
-    const Register = () => {
-      const user = useSelector((state) => state.user)
-      // ...
-    }
-    ```
-
-  - How to modify global state?
-    To modify the state, we first use the useDispatch hook, which will return a dispatch function
-    that receives as a parameter actions defined in the Redux slices. These actions are functions that
-    modify the global state like setNotification(), clearNotification. This allows us, for example, from any component, to modify the global notification variable
-
-    ```javascript
-    import { useDispatch } from 'react-redux'
-    // Later in the component we need:
-    const Register = () => {
-      const dispatch = useDispatch()
-      // ...
-      dispatch(
-        setNotification({
-          title: 'Hello Redux!',
-          text: 'This is a notification',
-          icon: 'info',
-        })
-      )
-    }
-    ```
-
-  #### Debugging Global State
-
-  To debug global state, you can install the [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) browser extension. This extension allows you to see the global state in real time and view the actions being executed.
-
-  This extension adds a window in the browser that shows the global state and the actions being executed, allowing you to see the global state in real time and debug the application more easily.
 
 ## License
 
