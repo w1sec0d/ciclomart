@@ -35,3 +35,5 @@ Planned work for the CicloMart frontend. Items are grouped by theme; rough effor
 - [ ] Saved searches and price-drop notifications (~8h)
 - [ ] Seller dashboard with sales analytics (~8h)
 - [ ] In-app messaging between buyers and sellers (~10h)
+- [ ] Create an admin dashboard for managing users, products, and orders (~10h)
+
