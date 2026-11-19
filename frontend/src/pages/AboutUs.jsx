@@ -12,11 +12,8 @@ import Information from '@mui/icons-material/HelpOutlineOutlined'
 import Mision from '@mui/icons-material/ShoppingCartOutlined'
 import Vision from '@mui/icons-material/PedalBikeOutlined'
 
-// Team photos
-import daniel from '../assets/Daniel.png'
-import johan from '../assets/Johan.png'
-import juan from '../assets/Juan.jpeg'
-import carlos from '../assets/Carlos.png'
+// Generic avatar used for all placeholder team members (no personal photos)
+import placeholderPhoto from '../assets/userPhoto.png'
 
 // Logo
 import Logo from '../assets/logo.png'
@@ -97,41 +94,37 @@ const AboutUsPage = () => {
       </div>
       <div className="flex flex-col sm:flex-row sm:space-x-10 items-center justify-center mt-10 mb-3 w-full space-y-8 sm:space-y-0">
         <TeamMemberCard
-          photo={daniel}
-          name={'Ronald Daniel Jacanamejoy'}
-          description={t('aboutUs.danielDescription')}
-          phrase={`"${t('aboutUs.danielPhrase')}"`}
-          linkedin={
-            'https://www.linkedin.com/in/ronald-daniel-jacanamejoy-mutumbajoy-29b2442b4/'
-          }
-          github={'https://github.com/RonaldDaniel20'}
+          photo={placeholderPhoto}
+          name={'Team Member 1'}
+          description={t('aboutUs.member1Description')}
+          phrase={`"${t('aboutUs.member1Phrase')}"`}
+          linkedin={'https://www.linkedin.com/in/your-profile'}
+          github={'https://github.com/your-username'}
         />
 
         <TeamMemberCard
-          photo={juan}
-          name={'Juan David Madrid Contreras'}
-          description={t('aboutUs.juanDescription')}
-          phrase={`"${t('aboutUs.juanPhrase')}"`}
-          linkedin={'https://www.linkedin.com/in/jumad-se/'}
-          github={'https://github.com/JuMad-SE'}
+          photo={placeholderPhoto}
+          name={'Team Member 2'}
+          description={t('aboutUs.member2Description')}
+          phrase={`"${t('aboutUs.member2Phrase')}"`}
+          linkedin={'https://www.linkedin.com/in/your-profile'}
+          github={'https://github.com/your-username'}
         />
         <TeamMemberCard
-          photo={carlos}
-          name={'Carlos David Ramirez Muñoz'}
-          description={t('aboutUs.carlosDescription')}
-          phrase={`"${t('aboutUs.carlosPhrase')}"`}
-          linkedin={'https://www.linkedin.com/in/cramirezmun/'}
-          github={'https://github.com/w1sec0d'}
+          photo={placeholderPhoto}
+          name={'Team Member 3'}
+          description={t('aboutUs.member3Description')}
+          phrase={`"${t('aboutUs.member3Phrase')}"`}
+          linkedin={'https://www.linkedin.com/in/your-profile'}
+          github={'https://github.com/your-username'}
         />
         <TeamMemberCard
-          photo={johan}
-          name={'Johan Rodriguez Gutierrez'}
-          description={t('aboutUs.johanDescription')}
-          phrase={`"${t('aboutUs.johanPhrase')}"`}
-          linkedin={
-            'https://www.linkedin.com/in/johan-david-rodriguez-gutierrez-a55738279/'
-          }
-          github={'https://github.com/Homeroso'}
+          photo={placeholderPhoto}
+          name={'Team Member 4'}
+          description={t('aboutUs.member4Description')}
+          phrase={`"${t('aboutUs.member4Phrase')}"`}
+          linkedin={'https://www.linkedin.com/in/your-profile'}
+          github={'https://github.com/your-username'}
         />
       </div>
     </div>

@@ -5,13 +5,13 @@
 This is the CicloMart storefront, part of the [CicloMart monorepo](../README.md).
 
 - App Link: _formerly deployed at [ciclomart.com](https://ciclomart.com) — now offline; see the demo video below_
-- User Instructions: [Canva Presentation](https://www.canva.com/design/DAG23e0XYS4/qg8KUY0ukJcyz4XLgN-wlw/edit?utm_content=DAG23e0XYS4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-- Hours Listing: [Google Spreadsheet](https://docs.google.com/spreadsheets/d/16X9bC5Drs2z4pwJ-D0CnR451mCKMRXd3i1B2WLkOS3M/edit?usp=sharing)
+- User instructions: _placeholder_
+- Hours listing: _placeholder_
 - Backend guide: [backend/README.md](../backend/README.md)
 - Monorepo root: [README.md](../README.md)
 
 > **Repository history:** this client was originally developed in the standalone
-> [`ciclomart_frontend`](https://github.com/w1sec0d/ciclomart_frontend) repository.
+> [`ciclomart_frontend`](https://github.com/your-username/ciclomart_frontend) repository.
 > It was merged with the backend into the [CicloMart monorepo](../README.md) on
 > 9 November 2026, and the old repository URL now redirects here.
 
@@ -23,7 +23,7 @@ CicloMart is a web marketplace for buying and selling bicycles and cycling spare
 
 ![CicloMart demo](../docs/preview.gif)
 
-[Click here to watch the full demo](https://youtu.be/vG_Zx618jJ4)
+_Demo video placeholder._
 
 ### Landing page
 
@@ -49,13 +49,6 @@ CicloMart is a web marketplace for buying and selling bicycles and cycling spare
 
 ![System Architecture](../docs/system_architecture.png)
 
-## Team Members
-
-- **Juan David Madrid Contreras** - [JuMad-SE](https://github.com/JuMad-SE)
-- **Carlos David Ramirez Muñoz** - [w1sec0d](https://github.com/w1sec0d)
-- **Johan David Rodriguez Gutierrez** - [Homeroso](https://github.com/Homeroso)
-- **Ronald Daniel Jacanamejoy Mutumbajoy** - [RonaldDaniel20](https://github.com/RonaldDaniel20)
-
 ## Developer Installation
 
 The recommended workflow is to install and run everything from the monorepo root.
@@ -63,7 +56,7 @@ The recommended workflow is to install and run everything from the monorepo root
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/w1sec0d/ciclomart.git
+git clone https://github.com/your-username/ciclomart.git
 cd ciclomart
 ```
 

@@ -75,9 +75,9 @@ function printResult(result) {
 // ============================================
 
 const testData = {
-    phone: "3001234567",
-    shortAddress: "Calle 123",
-    longAddress: "Carrera 45 #67-89, Apartamento 1001, Edificio Torres del Parque, Bogotá D.C., Colombia",
+    phone: "0000000000",
+    shortAddress: "123 Example Street",
+    longAddress: "123 Example Street, Example City",
     mpToken: "APP_USR-REDACTED",
     longText: "A".repeat(1000),
     veryLongText: "B".repeat(10000)
@@ -85,11 +85,11 @@ const testData = {
 
 const userRecord = {
     idUsuario: 1,
-    nombre: "Juan",
+    nombre: "User",
     apellido: "Pérez",
-    correo: "juan@example.com",
-    telefono: "3001234567",
-    direccionNombre: "Calle 123",
+    correo: "user@example.com",
+    telefono: "0000000000",
+    direccionNombre: "123 Example Street",
     direccionNumero: "45-67",
     direccionPiso: "10",
     direccionApartamento: "1001",

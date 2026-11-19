@@ -3,13 +3,13 @@
 [![en](https://img.shields.io/badge/Language-English-green)](README.md) [![es](https://img.shields.io/badge/Idioma-Español-green)](README.es.md)
 
 - App Link: _formerly deployed at [ciclomart.com](https://ciclomart.com) — now offline; see the demo video below_
-- User Instructions: [Canva Presentation](https://www.canva.com/design/DAG23e0XYS4/qg8KUY0ukJcyz4XLgN-wlw/edit?utm_content=DAG23e0XYS4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-- Hours Listing: [Google Spreadsheet](https://docs.google.com/spreadsheets/d/16X9bC5Drs2z4pwJ-D0CnR451mCKMRXd3i1B2WLkOS3M/edit?usp=sharing)
+- User instructions: _placeholder_
+- Hours listing: _placeholder_
 
 CicloMart was originally developed as two independent repositories:
 
-- [`ciclomart_frontend`](https://github.com/w1sec0d/ciclomart_frontend) — React/Vite client
-- [`ciclomart_backend`](https://github.com/w1sec0d/ciclomart_backend) — Express/MySQL API
+- [`ciclomart_frontend`](https://github.com/your-username/ciclomart_frontend) — React/Vite client
+- [`ciclomart_backend`](https://github.com/your-username/ciclomart_backend) — Express/MySQL API
 
 On 9 November 2026 both repositories were unified into this monorepo so that client and API changes ship together. The full commit history of both projects is preserved under `frontend/` and `backend/`.
 
@@ -21,7 +21,7 @@ CicloMart is a web marketplace for buying and selling bicycles and cycling spare
 
 ![CicloMart demo](docs/preview.gif)
 
-[Click here to watch the full demo](https://youtu.be/vG_Zx618jJ4)
+_Demo video placeholder._
 
 ### Landing page
 
@@ -69,7 +69,7 @@ CicloMart is a web marketplace for buying and selling bicycles and cycling spare
 ### Install
 
 ```bash
-git clone https://github.com/w1sec0d/ciclomart.git
+git clone https://github.com/your-username/ciclomart.git
 cd ciclomart
 npm install
 ```
@@ -128,13 +128,6 @@ You can also start them separately with `npm run dev:web` and `npm run dev:api`.
 - Backend guide: [backend/README.md](backend/README.md)
 - Encryption: [backend/docs/ENCRYPTION.md](backend/docs/ENCRYPTION.md)
 - Key rotation and AWS KMS: [backend/docs/KEY_ROTATION.md](backend/docs/KEY_ROTATION.md)
-
-## Team Members
-
-- **Juan David Madrid Contreras** - [JuMad-SE](https://github.com/JuMad-SE)
-- **Carlos David Ramirez Muñoz** - [w1sec0d](https://github.com/w1sec0d)
-- **Johan David Rodriguez Gutierrez** - [Homeroso](https://github.com/Homeroso)
-- **Ronald Daniel Jacanamejoy Mutumbajoy** - [RonaldDaniel20](https://github.com/RonaldDaniel20)
 
 ## License
 

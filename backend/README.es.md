@@ -5,13 +5,13 @@
 Esta es la API REST de CicloMart, parte del [monorepositorio de CicloMart](../README.es.md).
 
 - Link de la app: _antes desplegada en [ciclomart.com](https://ciclomart.com) — ahora fuera de línea; ver el video de demostración abajo_
-- Instrucciones de usuario: [Presentación en Canva](https://www.canva.com/design/DAG23e0XYS4/qg8KUY0ukJcyz4XLgN-wlw/edit?utm_content=DAG23e0XYS4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-- Listado de horas: [Hoja de cálculo en Google Sheets](https://docs.google.com/spreadsheets/d/16X9bC5Drs2z4pwJ-D0CnR451mCKMRXd3i1B2WLkOS3M/edit?usp=sharing)
+- Instrucciones de usuario: _marcador de posición_
+- Listado de horas: _marcador de posición_
 - Guía del frontend: [frontend/README.es.md](../frontend/README.es.md)
 - Raíz del monorepositorio: [README.es.md](../README.es.md)
 
 > **Historia del repositorio:** esta API se desarrolló originalmente en el
-> repositorio independiente [`ciclomart_backend`](https://github.com/w1sec0d/ciclomart_backend).
+> repositorio independiente [`ciclomart_backend`](https://github.com/your-username/ciclomart_backend).
 > Se unió con el frontend en el [monorepositorio de CicloMart](../README.es.md) el
 > 9 de noviembre de 2026.
 >
@@ -24,7 +24,7 @@ Esta es la API REST de CicloMart, parte del [monorepositorio de CicloMart](../RE
 
 ![Demo de CicloMart](../docs/preview.gif)
 
-[Haz clic aquí para ver la demo completa](https://youtu.be/vG_Zx618jJ4)
+_Video de demostración de ejemplo._
 
 ### Página de inicio
 
@@ -54,12 +54,6 @@ Esta es la API REST de CicloMart, parte del [monorepositorio de CicloMart](../RE
 
 CicloMart es una aplicación web de compra-venta de bicicletas y repuestos de ciclismo, con funcionalidades adaptadas a las necesidades de los ciclistas. Ofrece filtros avanzados de repuestos (grupos de transmisión, suspensión, peso, rines, frenos y muchas otras características), comparación de bicicletas y gestión segura de las tarjetas de propiedad legal de cada publicación, brindando una experiencia única, segura y confiable.
 
-## Miembros del equipo
-
-- **Juan David Madrid Contreras** - [JuMad-SE](https://github.com/JuMad-SE)
-- **Carlos David Ramirez Muñoz** - [w1sec0d](https://github.com/w1sec0d)
-- **Johan David Rodriguez Gutierrez** - [Homeroso](https://github.com/Homeroso)
-- **Ronald Daniel Jacanamejoy Mutumbajoy** - [RonaldDaniel20](https://github.com/RonaldDaniel20)
 
 ## Instalación para desarrolladores
 
@@ -68,7 +62,7 @@ El flujo recomendado es instalar y ejecutar todo desde la raíz del monoreposito
 1. Clona el repositorio:
 
 ```bash
-git clone https://github.com/w1sec0d/ciclomart.git
+git clone https://github.com/your-username/ciclomart.git
 cd ciclomart
 ```
 

@@ -29,3 +29,4 @@ Planned work for the CicloMart backend (Node.js/Express + MySQL). Rough effort e
 - [ ] Saved searches and price-drop notification jobs (~8h)
 - [ ] In-app messaging endpoints (~8h)
 - [ ] Seller analytics endpoints (~6h)
+- [ ] Create an admin dashboard for managing users, products, and orders (~10h)

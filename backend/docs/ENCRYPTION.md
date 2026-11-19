@@ -151,19 +151,19 @@ const { insert, updateById, findUserById } = require('./utils/dbHelpers')
 
 // INSERT - Encripta automáticamente campos sensibles
 await insert('usuario', {
-  nombre: 'Juan',
-  telefono: '3001234567', // Se encripta automáticamente
-  correo: 'juan@example.com',
+  nombre: 'User',
+  telefono: '0000000000', // Se encripta automáticamente
+  correo: 'user@example.com',
 })
 
 // UPDATE - Encripta automáticamente campos sensibles
 await updateById('usuario', 'idUsuario', 1, {
-  telefono: '3009876543', // Se encripta automáticamente
+  telefono: '0000000000', // Se encripta automáticamente
 })
 
 // SELECT - Desencripta automáticamente campos sensibles
 const user = await findUserById(1)
-console.log(user.telefono) // "3001234567" (ya desencriptado)
+console.log(user.telefono) // "0000000000" (ya desencriptado)
 ```
 
 ### Encriptación Manual
@@ -178,7 +178,7 @@ const {
 } = require('./utils/encryption')
 
 // Encriptar un valor
-const encrypted = encryptField('3001234567')
+const encrypted = encryptField('0000000000')
 // Resultado: "enc:v1:eyJpdiI6Ii4uLiIsImNpcGhlcnRleHQiOiIuLi4iLCJ0YWciOiIuLi4ifQ=="
 
 // Verificar si está encriptado
@@ -186,7 +186,7 @@ console.log(isEncrypted(encrypted)) // true
 
 // Desencriptar
 const decrypted = decryptField(encrypted)
-// Resultado: "3001234567"
+// Resultado: "0000000000"
 ```
 
 ---
@@ -220,7 +220,7 @@ enc:v1:<base64(JSON({iv, ciphertext, tag}))>
 ### Ejemplo Real
 
 ```
-Plaintext: "3001234567"
+Plaintext: "0000000000"
 
 Encrypted: "enc:v1:eyJpdiI6InhLOU1QMnFSOHZMMTIiLCJjaXBoZXJ0ZXh0IjoiQUJDMTIzWFlaIiwidGFnIjoiVEFHX0NBTENVTEFET18xMjMifQ=="
 

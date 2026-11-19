@@ -192,7 +192,7 @@ const updatePassword = async (req, res) => {
 const sendRecoverEmail = async (email, token, language = 'es') => {
   if (language.toLowerCase().startsWith('en')) {
     await emailTransporter.sendMail({
-      from: '"Ciclo Mart Support" <ciclomartsoporte@gmail.com>',
+      from: '"Ciclo Mart Support" <support@example.com>',
       to: email,
       subject: 'Password Recovery - CicloMart',
       text: `Hello, to reset your password, enter the following link: ${process.env.FRONTEND_EXTERNAL_URL}/passwordRecovery/${token}`,
@@ -260,7 +260,7 @@ const sendRecoverEmail = async (email, token, language = 'es') => {
     })
   } else {
     await emailTransporter.sendMail({
-      from: '"Ciclo Mart Soporte" <ciclomartsoporte@gmail.com>',
+      from: '"Ciclo Mart Soporte" <support@example.com>',
       to: email,
       subject: 'Recuperación de Contraseña - CicloMart',
       text: `¡Hola!, para restablecer tu contraseña, ingresa al siguiente enlace: ${process.env.FRONTEND_EXTERNAL_URL}/passwordRecovery/${token}`,
@@ -333,7 +333,7 @@ const sendRecoverEmail = async (email, token, language = 'es') => {
 const sendVerificationCode = async (email, token, code, language) => {
   if (language.toLowerCase().startsWith('en')) {
     await emailTransporter.sendMail({
-      from: '"Ciclo Mart Support" <ciclomartsoporte@gmail.com>',
+      from: '"Ciclo Mart Support" <support@example.com>',
       to: email,
       subject: 'Verification Code - CicloMart',
       text: `Hello, this is your verification code: ${code} You can enter the code in CicloMart or click here: ${process.env.FRONTEND_EXTERNAL_URL}/verificationCode/${token}?code=${code}`,
@@ -407,7 +407,7 @@ const sendVerificationCode = async (email, token, code, language) => {
     })
   } else {
     await emailTransporter.sendMail({
-      from: '"Ciclo Mart Soporte" <ciclomartsoporte@gmail.com>',
+      from: '"Ciclo Mart Soporte" <support@example.com>',
       to: email,
       subject: 'Código de Verificación - CicloMart',
       text: `¡Hola!, este es tu código de verificación: ${code} Puedes ingresar el código en CicloMart o hacer click aquí: ${process.env.FRONTEND_EXTERNAL_URL}/verificationCode/${token}?code=${code}`,

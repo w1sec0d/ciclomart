@@ -105,7 +105,7 @@ describe("encryption.js", () => {
 
     describe("encryptField/decryptField (high-level)", () => {
         test("should encrypt and decrypt a field value", () => {
-            const plaintext = "3001234567";
+            const plaintext = "0000000000";
             const encrypted = encryptField(plaintext);
 
             expect(encrypted).toContain(getEncryptionPrefix());
@@ -239,19 +239,19 @@ describe("sensitiveFields.js", () => {
         test("should encrypt sensitive fields only", () => {
             const data = {
                 nombre: "John",
-                telefono: "3001234567",
-                correo: "john@example.com"
+                telefono: "0000000000",
+                correo: "user@example.com"
             };
 
             const result = encryptSensitiveFields("usuario", data);
 
             // Non-sensitive fields unchanged
             expect(result.nombre).toBe("John");
-            expect(result.correo).toBe("john@example.com");
+            expect(result.correo).toBe("user@example.com");
 
             // Sensitive field encrypted
             expect(isEncrypted(result.telefono)).toBe(true);
-            expect(decryptField(result.telefono)).toBe("3001234567");
+            expect(decryptField(result.telefono)).toBe("0000000000");
         });
 
         test("should handle null/undefined values in data", () => {
@@ -285,7 +285,7 @@ describe("sensitiveFields.js", () => {
             // First encrypt
             const original = {
                 nombre: "John",
-                telefono: "3001234567"
+                telefono: "0000000000"
             };
             const encrypted = encryptSensitiveFields("usuario", original);
 
@@ -293,19 +293,19 @@ describe("sensitiveFields.js", () => {
             const decrypted = await decryptSensitiveFields("usuario", encrypted);
 
             expect(decrypted.nombre).toBe("John");
-            expect(decrypted.telefono).toBe("3001234567");
+            expect(decrypted.telefono).toBe("0000000000");
         });
 
         test("should handle unencrypted values (backwards compatibility)", async () => {
             const data = {
                 nombre: "John",
-                telefono: "3001234567" // Not encrypted
+                telefono: "0000000000" // Not encrypted
             };
 
             const result = await decryptSensitiveFields("usuario", data);
 
             // Should return as-is
-            expect(result.telefono).toBe("3001234567");
+            expect(result.telefono).toBe("0000000000");
         });
 
         test("should handle null/undefined values", async () => {
@@ -377,15 +377,15 @@ describe("decryptResponse middleware", () => {
         test("should decrypt encrypted fields in object", async () => {
             const data = {
                 nombre: "John",
-                telefono: encryptField("3001234567"),
-                correo: "john@example.com"
+                telefono: encryptField("0000000000"),
+                correo: "user@example.com"
             };
 
             const result = await decryptData(data);
 
             expect(result.nombre).toBe("John");
-            expect(result.telefono).toBe("3001234567");
-            expect(result.correo).toBe("john@example.com");
+            expect(result.telefono).toBe("0000000000");
+            expect(result.correo).toBe("user@example.com");
         });
 
         test("should decrypt nested objects", async () => {
@@ -394,14 +394,14 @@ describe("decryptResponse middleware", () => {
                 data: {
                     user: {
                         nombre: "John",
-                        telefono: encryptField("3001234567")
+                        telefono: encryptField("0000000000")
                     }
                 }
             };
 
             const result = await decryptData(data);
 
-            expect(result.data.user.telefono).toBe("3001234567");
+            expect(result.data.user.telefono).toBe("0000000000");
         });
 
         test("should decrypt arrays of objects", async () => {
@@ -423,12 +423,12 @@ describe("decryptResponse middleware", () => {
             const data = {
                 idProducto: 1,
                 nombreVendedor: "John",
-                telefonoVendedor: encryptField("3001234567")
+                telefonoVendedor: encryptField("0000000000")
             };
 
             const result = await decryptData(data);
 
-            expect(result.telefonoVendedor).toBe("3001234567");
+            expect(result.telefonoVendedor).toBe("0000000000");
         });
 
         test("should handle null/undefined", async () => {
@@ -438,12 +438,12 @@ describe("decryptResponse middleware", () => {
 
         test("should handle unencrypted values (backwards compatibility)", async () => {
             const data = {
-                telefono: "3001234567" // Not encrypted
+                telefono: "0000000000" // Not encrypted
             };
 
             const result = await decryptData(data);
 
-            expect(result.telefono).toBe("3001234567");
+            expect(result.telefono).toBe("0000000000");
         });
 
         test("should not modify fields not in FIELDS_TO_DECRYPT", async () => {
@@ -464,7 +464,7 @@ describe("decryptResponse middleware", () => {
                 nombre: "John",
                 mp_access_token: "APP_USR-secret-token",
                 mp_refresh_token: "TG-refresh-token",
-                telefono: encryptField("3001234567")
+                telefono: encryptField("0000000000")
             };
 
             const result = await decryptData(data);
@@ -472,7 +472,7 @@ describe("decryptResponse middleware", () => {
             // User data should be present
             expect(result.idUsuario).toBe(1);
             expect(result.nombre).toBe("John");
-            expect(result.telefono).toBe("3001234567");
+            expect(result.telefono).toBe("0000000000");
 
             // Server secrets should be REMOVED
             expect(result.mp_access_token).toBeUndefined();
@@ -483,7 +483,7 @@ describe("decryptResponse middleware", () => {
             const data = {
                 idUsuario: 1,
                 nombre: "John",
-                correo: "john@example.com",
+                correo: "user@example.com",
                 password: "$2b$10$hashedpassword..."
             };
 
@@ -491,7 +491,7 @@ describe("decryptResponse middleware", () => {
 
             expect(result.idUsuario).toBe(1);
             expect(result.nombre).toBe("John");
-            expect(result.correo).toBe("john@example.com");
+            expect(result.correo).toBe("user@example.com");
             expect(result.password).toBeUndefined();
         });
 

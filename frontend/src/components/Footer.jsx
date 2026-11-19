@@ -33,7 +33,7 @@ const Footer = forwardRef((props, ref) => {
             <h3 className="text-xl font-bold mb-4">{t('footer.resources')}</h3>
             <li className="flex items-center flex-col lg:flex-row lg:gap-4 justify-center">
               <Link
-                to="https://github.com/w1sec0d/ciclomart_backend"
+                to="https://github.com/your-username/ciclomart_backend"
                 target="_blank"
               >
                 <div className="hover:text-secondary hover:font-bold flex flex-row justify-center items-center">
@@ -42,7 +42,7 @@ const Footer = forwardRef((props, ref) => {
                 </div>
               </Link>
               <Link
-                to="https://github.com/w1sec0d/ciclomart_frontend"
+                to="https://github.com/your-username/ciclomart_frontend"
                 target="_blank"
               >
                 <div className="hover:text-secondary hover:font-bold flex flex-row justify-center items-center">
@@ -56,38 +56,38 @@ const Footer = forwardRef((props, ref) => {
             <h3 className="text-xl font-bold mb-4">{t('footer.developers')}</h3>
             <li>
               <Link
-                to={'https://github.com/w1sec0d'}
+                to={'https://github.com/your-username'}
                 className="hover:text-secondary  hover:font-bold"
                 target="_blank"
               >
-                Carlos David Ramírez Muñoz
+                Team Member 1
               </Link>
             </li>
             <li>
               <Link
-                to={'https://github.com/Homeroso'}
+                to={'https://github.com/your-username'}
                 className="hover:text-secondary  hover:font-bold"
                 target="_blank"
               >
-                Johan David Rodríguez Gutíerrez
+                Team Member 2
               </Link>
             </li>
             <li>
               <Link
-                to={'https://github.com/RonaldDaniel20'}
+                to={'https://github.com/your-username'}
                 className="hover:text-secondary  hover:font-bold"
                 target="_blank"
               >
-                Ronald Daniel Jacanamejoy Mutumbajoy
+                Team Member 3
               </Link>
             </li>
             <li>
               <Link
-                to={'https://github.com/JuMad-SE'}
+                to={'https://github.com/your-username'}
                 className="hover:text-secondary  hover:font-bold"
                 target="_blank"
               >
-                Juan David Madrid Contreras
+                Team Member 4
               </Link>
             </li>
           </ul>
@@ -99,11 +99,11 @@ const Footer = forwardRef((props, ref) => {
           <p className="text-center text-white">
             {t('footer.support')}
             <Link
-              to="mailto:ciclomartsoporte@gmail.com"
+              to="mailto:support@example.com"
               className="font-bold hover:font-black"
             >
               {' '}
-              ciclomartsoporte@gmail.com
+              support@example.com
             </Link>
           </p>
         </div>
